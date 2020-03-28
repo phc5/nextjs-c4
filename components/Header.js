@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import Link from 'next/Link';
+import Link from 'next/link';
 import ClientOnlyPortal from './Home/ClientOnlyPortal';
 import breakpoints from '../constants/breakpoints';
 import colors from '../constants/colors';
