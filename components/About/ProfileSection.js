@@ -7,7 +7,7 @@ function ProfileSection({ title, name, info, imagePath, isEven }) {
   return (
     <StyledSection>
       <StyledInner isEven={isEven}>
-        <StyledImage src={imagePath} isEven={isEven} />
+        <StyledImage src={imagePath} isEven={isEven} alt={`${name}-profile-pic`} />
         <StyledInfo>
           <StyledTitle>
             <StyledH2>{title}</StyledH2>

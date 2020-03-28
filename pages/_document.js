@@ -29,8 +29,14 @@ export default class MyDocument extends Document {
 
   render() {
     return (
-      <Html>
-        <Head />
+      <Html lang="en-US">
+        <Head>
+          <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+          <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+          />
+        </Head>
         <body>
           <Main />
           <div id="modal"></div>

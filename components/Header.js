@@ -16,13 +16,13 @@ function Header({ modalOpen, setModalOpen }) {
     <StyledHeader modalOpen={modalOpen}>
       <Link href="/" passHref>
         <StyledLogoContainer loaded={loaded}>
-          <img src="/assets/misc/c4-logo.png" />
+          <img src="/assets/misc/c4-logo.png" alt="c4-logo" />
         </StyledLogoContainer>
       </Link>
       <StyledNav>
         <StyledMenu loaded={loaded} onClick={event => setModalOpen(true)}>
           <StyledMenuText>MENU</StyledMenuText>
-          <StyledImage src="/assets/misc/hamburger.svg" />
+          <StyledImage src="/assets/misc/hamburger.svg" alt="hamburger-icon" />
         </StyledMenu>
       </StyledNav>
       <Portal modalOpen={modalOpen} setModalOpen={setModalOpen} />
