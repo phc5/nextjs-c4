@@ -2,11 +2,7 @@ import { AppProps } from 'next/app';
 import { ThemeProvider, createGlobalStyle } from 'styled-components';
 import '../global.css';
 
-const theme = {
-  colors: {
-    primary: '#0070f3'
-  }
-};
+const theme = {};
 
 const GlobalStyle = createGlobalStyle`
   /* open-sans-300 - latin */

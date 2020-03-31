@@ -35,8 +35,8 @@ function AboutBanner() {
 }
 
 const StyledSection = styled.section`
-  background-image: url('/assets/misc/background-banner.jpg');
   background-attachment: fixed;
+  background-image: url('/assets/misc/background-banner.jpg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -74,16 +74,16 @@ const StyledInner = styled.div<{ isLoaded: boolean }>`
 `;
 
 const StyledH1 = styled.h1`
+  color: ${colors.white};
   font-family: 'OpenSans700';
   font-size: 2em;
-  color: ${colors.white};
   font-weight: 600;
   line-height: 1.65;
   margin: 0 0 0.75em 0;
 
   :after {
-    content: '';
     background-color: ${colors.white};
+    content: '';
     display: block;
     height: 2px;
     margin: 0.325em 0 0.5em 0;

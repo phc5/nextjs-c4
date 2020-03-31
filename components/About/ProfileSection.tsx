@@ -26,7 +26,7 @@ function ProfileSection({ title, name, info, imagePath, isEven }) {
 }
 
 const StyledSection = styled.section`
-  background-color: #2a2f4a;
+  background-color: ${colors.blue};
   color: ${colors.white};
   position: relative;
 `;
@@ -72,8 +72,8 @@ const StyledH2 = styled.h2`
   text-align: left;
 
   :after {
-    content: '';
     background-color: ${colors.white};
+    content: '';
     display: block;
     height: 1px;
     margin: 0.325em 0 0.5em 0;

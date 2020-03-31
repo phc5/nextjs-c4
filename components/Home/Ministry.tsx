@@ -33,12 +33,12 @@ function Ministry() {
 }
 
 const StyledSection = styled.section`
+  align-items: stretch;
   color: ${colors.white};
-  position: relative;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  align-items: stretch;
+  position: relative;
 
   @media screen and (${breakpoints.medium}) {
     flex-direction: row;
@@ -46,7 +46,8 @@ const StyledSection = styled.section`
 `;
 
 const StyledMission = styled.div<{ first?: boolean }>`
-  background-color: ${props => (props.first ? `${colors.primary}` : '#47554F')};
+  background-color: ${props =>
+    props.first ? `${colors.primary}` : `${colors.green}`};
   flex: 1;
   opacity: 0.95;
   padding: 3em;
@@ -62,8 +63,8 @@ const StyledMission = styled.div<{ first?: boolean }>`
     text-transform: uppercase;
 
     :after {
-      content: '';
       background-color: ${colors.white};
+      content: '';
       display: block;
       height: 2px;
       margin: 0.325em 0 0.75em 0;

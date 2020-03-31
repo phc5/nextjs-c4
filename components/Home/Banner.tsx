@@ -38,8 +38,8 @@ function Banner() {
 }
 
 const StyledSection = styled.section`
-  background-image: url('/assets/misc/background-banner.jpg');
   background-attachment: fixed;
+  background-image: url('/assets/misc/background-banner.jpg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -72,8 +72,6 @@ const StyledInner = styled.div<{ isLoaded: boolean }>`
   padding: 0;
   transform: ${props => (props.isLoaded ? 'none' : 'translate3d(-2em, 0, 0)')};
   transition: opacity 1.5s ease, transform 0.5s ease-out, filter 0.5s ease;
-
-  max-width: 65em;
   width: calc(100% - 6em);
 `;
 
@@ -85,8 +83,8 @@ const StyledH1 = styled.h1`
   line-height: 1.65;
 
   :after {
-    content: '';
     background-color: ${colors.white};
+    content: '';
     display: block;
     height: 2px;
     margin: 0.25em 0 0.75em 0;

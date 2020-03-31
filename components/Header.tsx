@@ -78,25 +78,23 @@ const StyledHeader = styled.div<{ modalOpen: boolean }>`
   background-color: transparent;
   color: ${colors.white};
   display: flex;
-  position: absolute;
-  width: 100%;
-  display: flex;
-  left: 0;
-  top: 0;
-  z-index: 10;
-
   filter: ${props => (props.modalOpen ? 'blur(.75rem)' : 'blur(0)')};
+  left: 0;
+  position: absolute;
+  top: 0;
   transition: filter 0.1s ease-in;
+  width: 100%;
+  z-index: 10;
 `;
 
 const StyledLogoContainer = styled.a<{ loaded: boolean }>`
   display: inline-block;
   height: auto;
+  opacity: ${props => (props.loaded ? 1 : 0)};
   padding: 1em 1.25em;
   transform: ${props => (props.loaded ? 'none' : 'translate3d(-1em, 0, 0)')};
   transition: opacity 1s ease, transform 1s ease-out;
   transition-delay: 1.25s;
-  opacity: ${props => (props.loaded ? 1 : 0)};
 
   img {
     height: 31px;
@@ -111,8 +109,8 @@ const StyledLogoContainer = styled.a<{ loaded: boolean }>`
 
 const StyledNav = styled.nav`
   display: flex;
-  justify-content: flex-end;
   flex-grow: 1;
+  justify-content: flex-end;
 `;
 
 const StyledMenu = styled.div<{ loaded: boolean }>`
@@ -145,12 +143,12 @@ const StyledImage = styled.img`
 /** MODAL STYLES **/
 const StyledMenuOverlay = styled.nav<{ modalOpen: boolean }>`
   align-items: center;
-  color: ${colors.white};
-  display: flex;
-  justify-content: center;
   background: rgba(36, 41, 67, 0.9);
   box-shadow: none;
+  color: ${colors.white};
+  display: flex;
   height: 100%;
+  justify-content: center;
   left: 0;
   opacity: ${props => (props.modalOpen ? 1 : 0)};
   overflow: hidden;
@@ -190,7 +188,7 @@ const StyledMenuLink = styled.a`
 `;
 
 const StyledCloseButton = styled.button`
-  background-color: transparent;
+  background-color: ${colors.transparent};
   border: none;
   padding: 2rem;
   position: absolute;

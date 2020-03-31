@@ -21,7 +21,7 @@ function Index() {
   return (
     <>
       <Head>
-        <title>California Christ Community Church</title>
+        <title>About | California Christ Community Church</title>
       </Head>
       <Layout>
         <div>

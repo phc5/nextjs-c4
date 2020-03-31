@@ -21,7 +21,7 @@ function Footer() {
 }
 
 const StyledSection = styled.section`
-  background-color: #2a2f4a;
+  background-color: ${colors.blue};
   color: ${colors.white};
   position: relative;
 `;

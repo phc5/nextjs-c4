@@ -40,7 +40,7 @@ const StyledSection = styled.section`
 `;
 
 const StyledInner = styled.div`
-  color: white;
+  color: ${colors.white};
   display: flex;
   flex-wrap: wrap;
   padding: 3em;
@@ -56,8 +56,8 @@ const StyledInner = styled.div`
     width: 100%;
 
     :after {
-      content: '';
       background-color: ${colors.white};
+      content: '';
       display: block;
       height: 2px;
       margin: 0.325em 0 0.75em 0;
@@ -82,7 +82,7 @@ const StyledInnerDiv = styled.div<{ first: boolean }>`
 `;
 
 const StyledParagraph = styled.p`
-  color: white;
+  color: ${colors.white};
   font-size: 1.15em;
   line-height: 1.65;
   margin-bottom: 1em;
