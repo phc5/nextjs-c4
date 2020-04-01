@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import ClientOnlyPortal from './Home/ClientOnlyPortal';
 import colors from '../constants/colors';
 
 function Header({ modalOpen, setModalOpen }) {
+  const router = useRouter();
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
@@ -24,37 +26,55 @@ function Header({ modalOpen, setModalOpen }) {
           <StyledImage src="/assets/misc/hamburger.svg" alt="hamburger-icon" />
         </StyledMenu>
       </StyledNav>
-      <Portal modalOpen={modalOpen} setModalOpen={setModalOpen} />
+      <Portal
+        modalOpen={modalOpen}
+        setModalOpen={setModalOpen}
+        route={router.route}
+      />
     </StyledHeader>
   );
 }
 
-function Portal({ modalOpen, setModalOpen }) {
+function Portal({ modalOpen, setModalOpen, route }) {
   return (
     <ClientOnlyPortal selector="#modal">
       <StyledModal modalOpen={modalOpen}>
         <StyledMenuOverlay>
           <StyledInner>
             <Link href="/" passHref>
-              <StyledMenuLink>Home</StyledMenuLink>
+              <StyledMenuLink isMatchingRoute={route === '/'}>
+                Home
+              </StyledMenuLink>
             </Link>
             <Link href="/about" passHref>
-              <StyledMenuLink>About</StyledMenuLink>
+              <StyledMenuLink isMatchingRoute={route === '/about'}>
+                About
+              </StyledMenuLink>
             </Link>
             <Link href="/sermons" passHref>
-              <StyledMenuLink>Sermons</StyledMenuLink>
+              <StyledMenuLink isMatchingRoute={route === '/sermons'}>
+                Sermons
+              </StyledMenuLink>
             </Link>
             <Link href="/events" passHref>
-              <StyledMenuLink>Events</StyledMenuLink>
+              <StyledMenuLink isMatchingRoute={route === '/events'}>
+                Events
+              </StyledMenuLink>
             </Link>
             <Link href="/blog" passHref>
-              <StyledMenuLink>Blog</StyledMenuLink>
+              <StyledMenuLink isMatchingRoute={route === '/blog'}>
+                Blog
+              </StyledMenuLink>
             </Link>
             <Link href="/members" passHref>
-              <StyledMenuLink>Members</StyledMenuLink>
+              <StyledMenuLink isMatchingRoute={route === '/members'}>
+                Members
+              </StyledMenuLink>
             </Link>
             <Link href="/contact" passHref>
-              <StyledMenuLink>Contact</StyledMenuLink>
+              <StyledMenuLink isMatchingRoute={route === '/contact'}>
+                Contact
+              </StyledMenuLink>
             </Link>
           </StyledInner>
           <StyledCloseButton type="button" onClick={() => setModalOpen(false)}>
@@ -101,7 +121,9 @@ const StyledLogoContainer = styled.a<{ loaded: boolean }>`
   transition-delay: 1.25s;
 
   img {
-    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    display: block;
   }
 `;
 
@@ -177,7 +199,7 @@ const StyledInner = styled.div`
   }
 `;
 
-const StyledMenuLink = styled.a`
+const StyledMenuLink = styled.a<{ isMatchingRoute: boolean }>`
   color: ${colors.white};
   font-family: 'OpenSans700';
   font-size: em;
@@ -191,6 +213,14 @@ const StyledMenuLink = styled.a`
   :hover {
     color: ${colors.primary};
   }
+
+  ${props =>
+    props.isMatchingRoute &&
+    `
+    color: ${colors.disabled};
+    pointer-events: none;
+    user-select: none;
+  `}
 `;
 
 const StyledCloseButton = styled.button`
