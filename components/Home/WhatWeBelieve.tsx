@@ -5,16 +5,23 @@ import breakpoints from '../../constants/breakpoints';
 import whatWeBelieveData from '../../data/whatWeBelieve';
 
 function WhatWeBelieve() {
-  const content = whatWeBelieveData.map(({ title, description }, i) => {
-    return (
-      <StyledInnerDiv first={i === 0} key={title}>
-        <h3>{title}</h3>
-        {description.map((paragraph, i) => (
-          <StyledParagraph key={i}>{paragraph}</StyledParagraph>
-        ))}
-      </StyledInnerDiv>
-    );
-  });
+  const content = whatWeBelieveData.map(
+    ({ title, description }, contentIndex) => {
+      return (
+        <StyledInnerDiv first={contentIndex === 0} key={title}>
+          <h3>{title}</h3>
+          {description.map((paragraph, paragraphIndex) => (
+            <StyledParagraph
+              first={contentIndex === 0}
+              key={`${title}-paragraph-${paragraphIndex}`}
+            >
+              {paragraph}
+            </StyledParagraph>
+          ))}
+        </StyledInnerDiv>
+      );
+    }
+  );
 
   return (
     <StyledSection>
@@ -41,51 +48,49 @@ const StyledSection = styled.section`
 
 const StyledInner = styled.div`
   color: ${colors.white};
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  margin: 0 auto;
+  max-width: 100em;
   padding: 3em;
 
   @media screen and (${breakpoints.medium}) {
-    padding: 5.5em;
+    grid-template-columns: repeat(3, 1fr);
+    padding: 4em;
   }
 
   h3 {
     font-family: 'OpenSans700';
-    font-size: 1.75em;
+    font-size: 1.5em;
+    margin-bottom: 0.5em;
     text-transform: uppercase;
     width: 100%;
 
-    :after {
-      background-color: ${colors.white};
-      content: '';
-      display: block;
-      height: 2px;
-      margin: 0.325em 0 0.75em 0;
-      width: 100%;
-    }
-
     @media screen and (${breakpoints.medium}) {
-      font-size: 2em;
-      width: fit-content;
+      font-size: 1.75em;
     }
+  }
+
+  & > div:first-child {
+    grid-column: 1 / -1;
   }
 `;
 
 const StyledInnerDiv = styled.div<{ first: boolean }>`
-  flex: 100%;
-  margin-bottom: 1.5em;
-  padding: 1.5em;
-
-  @media screen and (${breakpoints.medium}) {
-    flex: ${props => (props.first ? '100%' : '33%')};
-  }
+  margin-bottom: 2.5em;
+  justify-content: space-between;
 `;
 
-const StyledParagraph = styled.p`
+const StyledParagraph = styled.p<{ first?: boolean }>`
   color: ${colors.white};
-  font-size: 1.15em;
+  font-size: 1.1em;
   line-height: 1.65;
-  margin-bottom: 1em;
+  ${props => props.first && 'padding-bottom: 1em;'}
+  
+
+  @media screen and (${breakpoints.medium}) {
+    ${props => !props.first && 'padding-right: 2em;'}
+  }
 `;
 
 export default WhatWeBelieve;

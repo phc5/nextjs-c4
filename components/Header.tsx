@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
 import ClientOnlyPortal from './Home/ClientOnlyPortal';
-import breakpoints from '../constants/breakpoints';
 import colors from '../constants/colors';
 
 function Header({ modalOpen, setModalOpen }) {
@@ -33,53 +32,58 @@ function Header({ modalOpen, setModalOpen }) {
 function Portal({ modalOpen, setModalOpen }) {
   return (
     <ClientOnlyPortal selector="#modal">
-      <StyledMenuOverlay modalOpen={modalOpen}>
-        <StyledInner>
-          <Link href="/" passHref>
-            <StyledMenuLink>Home</StyledMenuLink>
-          </Link>
-          <Link href="/about" passHref>
-            <StyledMenuLink>About</StyledMenuLink>
-          </Link>
-          <Link href="/sermons" passHref>
-            <StyledMenuLink>Sermons</StyledMenuLink>
-          </Link>
-          <Link href="/events" passHref>
-            <StyledMenuLink>Events</StyledMenuLink>
-          </Link>
-          <Link href="/blog" passHref>
-            <StyledMenuLink>Blog</StyledMenuLink>
-          </Link>
-          <Link href="/members" passHref>
-            <StyledMenuLink>Members</StyledMenuLink>
-          </Link>
-          <Link href="/contact" passHref>
-            <StyledMenuLink>Contact</StyledMenuLink>
-          </Link>
-        </StyledInner>
-        <StyledCloseButton type="button" onClick={() => setModalOpen(false)}>
-          <svg
-            fill="#ffffff"
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-          >
-            <path d="M23 20.168l-8.185-8.187 8.185-8.174-2.832-2.807-8.182 8.179-8.176-8.179-2.81 2.81 8.186 8.196-8.186 8.184 2.81 2.81 8.203-8.192 8.18 8.192z" />
-          </svg>
-        </StyledCloseButton>
-      </StyledMenuOverlay>
+      <StyledModal modalOpen={modalOpen}>
+        <StyledMenuOverlay>
+          <StyledInner>
+            <Link href="/" passHref>
+              <StyledMenuLink>Home</StyledMenuLink>
+            </Link>
+            <Link href="/about" passHref>
+              <StyledMenuLink>About</StyledMenuLink>
+            </Link>
+            <Link href="/sermons" passHref>
+              <StyledMenuLink>Sermons</StyledMenuLink>
+            </Link>
+            <Link href="/events" passHref>
+              <StyledMenuLink>Events</StyledMenuLink>
+            </Link>
+            <Link href="/blog" passHref>
+              <StyledMenuLink>Blog</StyledMenuLink>
+            </Link>
+            <Link href="/members" passHref>
+              <StyledMenuLink>Members</StyledMenuLink>
+            </Link>
+            <Link href="/contact" passHref>
+              <StyledMenuLink>Contact</StyledMenuLink>
+            </Link>
+          </StyledInner>
+          <StyledCloseButton type="button" onClick={() => setModalOpen(false)}>
+            <svg
+              fill="#ffffff"
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+            >
+              <path d="M23 20.168l-8.185-8.187 8.185-8.174-2.832-2.807-8.182 8.179-8.176-8.179-2.81 2.81 8.186 8.196-8.186 8.184 2.81 2.81 8.203-8.192 8.18 8.192z" />
+            </svg>
+          </StyledCloseButton>
+        </StyledMenuOverlay>
+      </StyledModal>
     </ClientOnlyPortal>
   );
 }
 
 /** NAVBAR STYLES **/
-const StyledHeader = styled.div<{ modalOpen: boolean }>`
+const StyledHeader = styled.header<{ modalOpen: boolean }>`
   background-color: transparent;
   color: ${colors.white};
   display: flex;
   filter: ${props => (props.modalOpen ? 'blur(.75rem)' : 'blur(0)')};
+  height: 3.25em;
   left: 0;
+  letter-spacing: 0.25em;
+  line-height: 3.25em;
   position: absolute;
   top: 0;
   transition: filter 0.1s ease-in;
@@ -91,19 +95,13 @@ const StyledLogoContainer = styled.a<{ loaded: boolean }>`
   display: inline-block;
   height: auto;
   opacity: ${props => (props.loaded ? 1 : 0)};
-  padding: 1em 1.25em;
+  padding: 1em 1.25em 0 1.25em;
   transform: ${props => (props.loaded ? 'none' : 'translate3d(-1em, 0, 0)')};
   transition: opacity 1s ease, transform 1s ease-out;
   transition-delay: 1.25s;
 
   img {
-    height: 31px;
-    width: 50px;
-
-    @media screen and (${breakpoints.small}) {
-      height: 41px;
-      width: 65px;
-    }
+    height: 100%;
   }
 `;
 
@@ -117,7 +115,7 @@ const StyledMenu = styled.div<{ loaded: boolean }>`
   align-items: center;
   display: flex;
   opacity: ${props => (props.loaded ? 1 : 0)};
-  padding: 1em 2em;
+  padding: 2em 2em 0 2em;
   transform: ${props => (props.loaded ? 'none' : 'translate3d(1em, 0, 0)')};
   transition: opacity 1s ease, transform 1s ease-out;
   transition-delay: 1.25s;
@@ -141,30 +139,38 @@ const StyledImage = styled.img`
 `;
 
 /** MODAL STYLES **/
-const StyledMenuOverlay = styled.nav<{ modalOpen: boolean }>`
+const StyledModal = styled.nav<{ modalOpen: boolean }>`
   align-items: center;
-  background: rgba(36, 41, 67, 0.9);
+  background: ${colors.blue};
   box-shadow: none;
   color: ${colors.white};
   display: flex;
-  height: 100%;
   justify-content: center;
+  height: 100%;
   left: 0;
   opacity: ${props => (props.modalOpen ? 1 : 0)};
   overflow: hidden;
-  position: fixed;
+  padding: 3em 2em;
+  position: absolute;
   top: 0;
-  transition: transform 0.2s ease-in, opacity 0.2s ease-in,
-    visibility 0.2s ease-in;
+  transition: transform 0.35s ease, opacity 0.35s ease, visibility 0.35s;
   visibility: ${props => (props.modalOpen ? 'visible' : 'hidden')};
   width: 100%;
   z-index: 10002;
 `;
 
+const StyledMenuOverlay = styled.div`
+  max-width: 100%;
+  max-height: 100vh;
+  overflow: auto;
+  text-align: center;
+  width: 18em;
+`;
+
 const StyledInner = styled.div`
   display: flex;
   flex-direction: column;
-  width: 20em;
+  width: 18em;
 
   a:not(:first-child) {
     border-top: solid 1px rgba(190, 190, 255, 0.2);
@@ -174,9 +180,9 @@ const StyledInner = styled.div`
 const StyledMenuLink = styled.a`
   color: ${colors.white};
   font-family: 'OpenSans700';
-  font-size: 1.75em;
+  font-size: em;
   letter-spacing: 0.25em;
-  line-height: 3em;
+  line-height: 4em;
   text-align: center;
   text-decoration: none;
   text-transform: uppercase;

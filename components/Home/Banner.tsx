@@ -13,55 +13,60 @@ function Banner() {
   }, []);
 
   return (
-    <StyledSection>
-      <StyledWrapper>
-        <StyledInner isLoaded={isLoaded}>
-          <header>
-            <StyledH1>
-              Welcome to <br />
-              California Christ Community Church
-            </StyledH1>
-          </header>
+    <>
+      <StyledSection>
+        <StyledWrapper>
+          <StyledInner isLoaded={isLoaded}>
+            <header>
+              <StyledH1>
+                Welcome to <br />
+                California Christ Community Church
+              </StyledH1>
+            </header>
 
-          <StyledSubtitle>
-            <StyledParagraph>
-              Come join us for worship on Sundays at 12:30pm.
-            </StyledParagraph>
-            <StyledParagraph>
-              We are located at 8381 Katella Ave, Suite N, Stanton, CA 90680.
-            </StyledParagraph>
-          </StyledSubtitle>
-        </StyledInner>
-      </StyledWrapper>
-    </StyledSection>
+            <StyledSubtitle>
+              <StyledParagraph>
+                Come join us for worship on Sundays at 12:30pm.
+              </StyledParagraph>
+              <StyledParagraph>
+                We are located at 8381 Katella Ave, Suite N, Stanton, CA 90680.
+              </StyledParagraph>
+            </StyledSubtitle>
+          </StyledInner>
+        </StyledWrapper>
+      </StyledSection>
+    </>
   );
 }
 
 const StyledSection = styled.section`
+  align-items: center;
   background-attachment: fixed;
-  background-image: url('/assets/misc/background-banner.jpg');
+  background-image: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.5) 0%,
+      rgba(0, 0, 0, 0.5) 30%,
+      rgba(0, 0, 0, 0.8) 80%,
+      rgba(0, 0, 0, 0.9) 100%
+    ),
+    url('/assets/misc/background-banner.jpg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   color: ${colors.white};
+  display: flex;
   height: 100vh;
-  margin-bottom: -6em;
-  min-height: 50em;
+  margin-bottom: -3.25em;
+  padding: 6em 0 2em 0;
   position: relative;
-  top: -6em;
+  top: -3.25em;
 `;
 
 const StyledWrapper = styled.div`
   align-items: center;
-  background: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0.5) 0%,
-    rgba(0, 0, 0, 0.5) 30%,
-    rgba(0, 0, 0, 0.8) 80%,
-    rgba(0, 0, 0, 0.9) 100%
-  );
   display: flex;
   height: 100%;
+  margin: 0 auto;
 `;
 
 const StyledInner = styled.div<{ isLoaded: boolean }>`
@@ -69,10 +74,10 @@ const StyledInner = styled.div<{ isLoaded: boolean }>`
   margin: 0 auto;
   max-width: 65em;
   opacity: ${props => (props.isLoaded ? 1 : 0)};
-  padding: 0;
+  padding: 3em;
   transform: ${props => (props.isLoaded ? 'none' : 'translate3d(-2em, 0, 0)')};
   transition: opacity 1.5s ease, transform 0.5s ease-out, filter 0.5s ease;
-  width: calc(100% - 6em);
+  /* width: calc(100% - 1em); */
 `;
 
 const StyledH1 = styled.h1`

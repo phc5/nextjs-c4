@@ -59,25 +59,17 @@ const StyledMission = styled.div<{ first?: boolean }>`
 
   h3 {
     font-family: 'OpenSans700';
-    font-size: 1.75em;
+    font-size: 1.5em;
+    margin-bottom: 0.5em;
     text-transform: uppercase;
 
-    :after {
-      background-color: ${colors.white};
-      content: '';
-      display: block;
-      height: 2px;
-      margin: 0.325em 0 0.75em 0;
-      width: 100%;
-    }
-
     @media screen and (${breakpoints.small}) {
-      font-size: 2em;
+      font-size: 1.75em;
     }
   }
 
   p {
-    font-size: 1.15em;
+    font-size: 1.1em;
     line-height: 1.65;
   }
 `;
