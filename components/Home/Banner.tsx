@@ -41,7 +41,6 @@ function Banner() {
 
 const StyledSection = styled.section`
   align-items: center;
-  background-attachment: fixed;
   background-image: linear-gradient(
       to bottom,
       rgba(0, 0, 0, 0.5) 0%,
@@ -60,6 +59,10 @@ const StyledSection = styled.section`
   padding: 6em 0 2em 0;
   position: relative;
   top: -3.25em;
+
+  @media screen and (${breakpoints.large}) {
+    background-attachment: fixed;
+  }
 `;
 
 const StyledWrapper = styled.div`
@@ -77,7 +80,6 @@ const StyledInner = styled.div<{ isLoaded: boolean }>`
   padding: 3em;
   transform: ${props => (props.isLoaded ? 'none' : 'translate3d(-2em, 0, 0)')};
   transition: opacity 1.5s ease, transform 0.5s ease-out, filter 0.5s ease;
-  /* width: calc(100% - 1em); */
 `;
 
 const StyledH1 = styled.h1`

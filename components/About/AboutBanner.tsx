@@ -35,7 +35,6 @@ function AboutBanner() {
 }
 
 const StyledSection = styled.section`
-  background-attachment: fixed;
   background-image: url('/assets/misc/background-banner.jpg');
   background-position: center;
   background-repeat: no-repeat;
@@ -46,6 +45,10 @@ const StyledSection = styled.section`
   min-height: 40em;
   position: relative;
   top: -6em;
+
+  @media screen and (${breakpoints.large}) {
+    background-attachment: fixed;
+  }
 `;
 
 const StyledWrapper = styled.div`

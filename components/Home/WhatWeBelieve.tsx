@@ -39,11 +39,14 @@ const StyledSection = styled.section`
       rgba(0, 0, 0, 0.8) 100%
     ),
     url('/assets/misc/background-nature.jpg');
-  background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
+
+  @media screen and (${breakpoints.large}) {
+    background-attachment: fixed;
+  }
 `;
 
 const StyledInner = styled.div`
