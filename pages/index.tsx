@@ -13,7 +13,7 @@ function Index() {
       <Layout>
         <Banner />
         <Ministry />
-        <WhatWeBelieve />
+        <WhatWeBelieve lastSection />
       </Layout>
     </>
   );

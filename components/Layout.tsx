@@ -8,18 +8,18 @@ const Layout = props => {
   return (
     <StyledWrapper>
       <Header setModalOpen={setModalOpen} modalOpen={modalOpen} />
-      <div>{props.children}</div>
+      <StyledContent modalOpen={modalOpen}>{props.children}</StyledContent>
       <Footer />
     </StyledWrapper>
   );
 };
 
-// const StyledContainer = styled.div<{ modalOpen: boolean }>`
-//   font-family: 'OpenSansRegular', sans-serif;
-//   margin: 0 auto;
-//   filter: ${props => (props.modalOpen ? 'blur(.75rem)' : 'blur(0)')};
-//   transition: filter 0.1s ease-in;
-// `;
+const StyledContent = styled.div<{ modalOpen: boolean }>`
+  font-family: 'OpenSansRegular', sans-serif;
+  margin: 0 auto;
+  filter: ${props => (props.modalOpen ? 'blur(.75rem)' : 'blur(0)')};
+  transition: filter 0.1s ease-in;
+`;
 
 const StyledWrapper = styled.div`
   padding-top: 3.25em;

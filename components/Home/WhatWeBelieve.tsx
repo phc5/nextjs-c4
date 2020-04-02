@@ -4,7 +4,7 @@ import colors from '../../constants/colors';
 import breakpoints from '../../constants/breakpoints';
 import whatWeBelieveData from '../../data/whatWeBelieve';
 
-function WhatWeBelieve() {
+function WhatWeBelieve({ lastSection }: { lastSection?: boolean }) {
   const content = whatWeBelieveData.map(
     ({ title, description }, contentIndex) => {
       return (
@@ -24,13 +24,13 @@ function WhatWeBelieve() {
   );
 
   return (
-    <StyledSection>
+    <StyledSection lastSection={lastSection}>
       <StyledInner>{content}</StyledInner>
     </StyledSection>
   );
 }
 
-const StyledSection = styled.section`
+const StyledSection = styled.section<{ lastSection: boolean }>`
   background: linear-gradient(
       to bottom,
       rgba(0, 0, 0, 0.5) 0%,
@@ -42,7 +42,10 @@ const StyledSection = styled.section`
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  padding-top: 4em;
   position: relative;
+
+  ${props => props.lastSection && `padding-bottom: 6em;`}
 
   @media screen and (${breakpoints.large}) {
     background-attachment: fixed;

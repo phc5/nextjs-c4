@@ -2,31 +2,45 @@ import React from 'react';
 import styled from 'styled-components';
 import colors from '../../constants/colors';
 import breakpoints from '../../constants/breakpoints';
+import leadership from '../../data/leadership';
 
-function ProfileSection({ title, name, info, imagePath, isEven }) {
+function ProfileSection({ lastSection }: { lastSection?: boolean }) {
+  const profileSections = leadership.map(
+    ({ title, name, info, imagePath }, index) => (
+      <StyledSection>
+        <StyledInner isEven={index % 2 === 0}>
+          <StyledImage
+            src={imagePath}
+            isEven={index % 2 === 0}
+            alt={`${name}-profile-pic`}
+          />
+          <StyledInfo>
+            <StyledTitle>
+              <StyledH2>{title}</StyledH2>
+              <StyledH3>{name}</StyledH3>
+            </StyledTitle>
+
+            <StyledInfoParagraph>{info}</StyledInfoParagraph>
+          </StyledInfo>
+        </StyledInner>
+      </StyledSection>
+    )
+  );
+
   return (
-    <StyledSection>
-      <StyledInner isEven={isEven}>
-        <StyledImage
-          src={imagePath}
-          isEven={isEven}
-          alt={`${name}-profile-pic`}
-        />
-        <StyledInfo>
-          <StyledTitle>
-            <StyledH2>{title}</StyledH2>
-            <StyledH3>{name}</StyledH3>
-          </StyledTitle>
-
-          <StyledInfoParagraph>{info}</StyledInfoParagraph>
-        </StyledInfo>
-      </StyledInner>
-    </StyledSection>
+    <StyledProfileContainer lastSection={lastSection}>
+      {profileSections}
+    </StyledProfileContainer>
   );
 }
 
-const StyledSection = styled.section`
+const StyledProfileContainer = styled.div<{ lastSection: boolean }>`
   background-color: ${colors.blue};
+  padding-top: 4em;
+  ${props => props.lastSection && 'padding-bottom: 6em;'}
+`;
+
+const StyledSection = styled.section`
   color: ${colors.white};
   position: relative;
 `;
