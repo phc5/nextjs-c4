@@ -7,39 +7,27 @@ export default [
     imagePath: '/assets/portraits/dp.jpg'
   },
   {
-    title: 'Elementary Director',
-    name: 'Eunice Yoon',
-    info: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam quis lorem ac nulla volutpat consequat. Maecenas dictum nunc sed lacus venenatis, vitae condimentum augue vulputate. Praesent at vestibulum purus, eu pulvinar nibh.',
-    imagePath: '/assets/portraits/eunice.jpg'
-  },
-  {
-    title: 'Praise & Treasury Chair',
-    name: 'Josh Yoon',
-    info: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam quis lorem ac nulla volutpat consequat. Maecenas dictum nunc sed lacus venenatis, vitae condimentum augue vulputate. Praesent at vestibulum purus, eu pulvinar nibh.',
-    imagePath: '/assets/portraits/josh.jpg'
-  },
-  {
-    title: 'Hospitality Chair',
-    name: 'Rebekah Park',
-    info: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam quis lorem ac nulla volutpat consequat. Maecenas dictum nunc sed lacus venenatis, vitae condimentum augue vulputate. Praesent at vestibulum purus, eu pulvinar nibh.',
-    imagePath: '/assets/portraits/rebekah.jpg'
-  },
-  {
     title: 'Hospitality Chair',
     name: 'Ellen Lee',
     info: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam quis lorem ac nulla volutpat consequat. Maecenas dictum nunc sed lacus venenatis, vitae condimentum augue vulputate. Praesent at vestibulum purus, eu pulvinar nibh.',
-    imagePath: '/assets/portraits/noimage.png'
+    imagePath: '/assets/portraits/ellen.jpg'
   },
   {
-    title: 'Communications Chair',
+    title: 'Treasury & Communications Chair',
     name: 'Paul Chong',
     info: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam quis lorem ac nulla volutpat consequat. Maecenas dictum nunc sed lacus venenatis, vitae condimentum augue vulputate. Praesent at vestibulum purus, eu pulvinar nibh.',
     imagePath: '/assets/portraits/noimage.png'
   },
   {
-    title: 'Youth Group Teacher',
+    title: 'Praise Leader',
     name: 'Daniel Yoon',
     info: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam quis lorem ac nulla volutpat consequat. Maecenas dictum nunc sed lacus venenatis, vitae condimentum augue vulputate. Praesent at vestibulum purus, eu pulvinar nibh.',
     imagePath: '/assets/portraits/noimage.png'
-  }
+  },
+  {
+    title: 'Staff',
+    name: 'Rebekah Park',
+    info: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam quis lorem ac nulla volutpat consequat. Maecenas dictum nunc sed lacus venenatis, vitae condimentum augue vulputate. Praesent at vestibulum purus, eu pulvinar nibh.',
+    imagePath: '/assets/portraits/rebekah.jpg'
+  },
 ];

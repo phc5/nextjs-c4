@@ -110,6 +110,7 @@ const StyledSubtitle = styled.div`
 `;
 
 const StyledParagraph = styled.p`
+  line-height: 1.5em;
   margin-bottom: 1em;
 `;
 

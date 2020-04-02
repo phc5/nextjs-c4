@@ -105,7 +105,6 @@ const StyledSubtitle = styled.div`
 `;
 
 const StyledParagraph = styled.p`
-  letter-spacing: 0.1em;
   line-height: 1.5em;
 `;
 
