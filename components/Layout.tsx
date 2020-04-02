@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import Header from './Header';
-// import Footer from './Footer';
 import styled from 'styled-components';
+import Header from './Header';
+import Footer from './Footer';
 
 const Layout = props => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -9,7 +9,7 @@ const Layout = props => {
     <StyledWrapper>
       <Header setModalOpen={setModalOpen} modalOpen={modalOpen} />
       <div>{props.children}</div>
-      {/* <Footer /> */}
+      <Footer />
     </StyledWrapper>
   );
 };

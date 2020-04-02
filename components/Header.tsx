@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import ClientOnlyPortal from './Home/ClientOnlyPortal';
 import colors from '../constants/colors';
+import routes from '../constants/routes';
 
 function Header({ modalOpen, setModalOpen }) {
   const router = useRouter();
@@ -29,53 +30,25 @@ function Header({ modalOpen, setModalOpen }) {
       <Portal
         modalOpen={modalOpen}
         setModalOpen={setModalOpen}
-        route={router.route}
+        currentRoute={router.route}
       />
     </StyledHeader>
   );
 }
 
-function Portal({ modalOpen, setModalOpen, route }) {
+function Portal({ modalOpen, setModalOpen, currentRoute }) {
+  const MenuItems = routes.map(route => (
+    <Link href={route.route} passHref key={route.name}>
+      <StyledMenuLink isMatchingRoute={currentRoute === route.route}>{route.name}</StyledMenuLink>
+    </Link>
+  ));
+
   return (
     <ClientOnlyPortal selector="#modal">
       <StyledModal modalOpen={modalOpen}>
         <StyledMenuOverlay>
           <StyledInner>
-            <Link href="/" passHref>
-              <StyledMenuLink isMatchingRoute={route === '/'}>
-                Home
-              </StyledMenuLink>
-            </Link>
-            <Link href="/about" passHref>
-              <StyledMenuLink isMatchingRoute={route === '/about'}>
-                About
-              </StyledMenuLink>
-            </Link>
-            <Link href="/sermons" passHref>
-              <StyledMenuLink isMatchingRoute={route === '/sermons'}>
-                Sermons
-              </StyledMenuLink>
-            </Link>
-            <Link href="/events" passHref>
-              <StyledMenuLink isMatchingRoute={route === '/events'}>
-                Events
-              </StyledMenuLink>
-            </Link>
-            <Link href="/blog" passHref>
-              <StyledMenuLink isMatchingRoute={route === '/blog'}>
-                Blog
-              </StyledMenuLink>
-            </Link>
-            <Link href="/members" passHref>
-              <StyledMenuLink isMatchingRoute={route === '/members'}>
-                Members
-              </StyledMenuLink>
-            </Link>
-            <Link href="/contact" passHref>
-              <StyledMenuLink isMatchingRoute={route === '/contact'}>
-                Contact
-              </StyledMenuLink>
-            </Link>
+            {MenuItems}
           </StyledInner>
           <StyledCloseButton type="button" onClick={() => setModalOpen(false)}>
             <svg
