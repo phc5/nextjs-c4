@@ -22,8 +22,10 @@ function Footer() {
           <InfoParagraph>
             Our church is located at{' '}
             <StyledLocationLink
-              href="https://goo.gl/maps/nJeMJMu3jX3kHAdWA"
+              href="https://goo.gl/maps/GFDRM4vtH4MqydPm9"
               target="_blank"
+              aria-label="C4 Ministry's location on Google Maps"
+              rel="noreferrer"
             >
               8381 Katella Ave, Suite N, Stanton, CA 90680
             </StyledLocationLink>
@@ -43,6 +45,8 @@ function Footer() {
               <StyledSocialLink
                 href="https://www.facebook.com/California.Christ.Community.Church"
                 target="_blank"
+                aria-label="C4 Ministry's Facebook"
+                rel="noreferrer"
               >
                 <svg
                   fill={colors.white}
@@ -57,6 +61,8 @@ function Footer() {
               <StyledSocialLink
                 href="https://www.instagram.com/c4ministry/"
                 target="_blank"
+                aria-label="C4 Ministry's Instagram"
+                rel="noreferrer"
               >
                 <svg
                   fill={colors.white}
@@ -71,6 +77,8 @@ function Footer() {
               <StyledSocialLink
                 href="https://www.youtube.com/channel/UCRKb2u0ePuQ9t6TnKVfe1Gw"
                 target="_blank"
+                aria-label="C4 Ministry's YouTube"
+                rel="noreferrer"
               >
                 <svg
                   fill={colors.white}
@@ -82,6 +90,54 @@ function Footer() {
                   <path d="M16.23 7.102c-2.002-.136-6.462-.135-8.461 0-2.165.148-2.419 1.456-2.436 4.898.017 3.436.27 4.75 2.437 4.898 1.999.135 6.459.136 8.461 0 2.165-.148 2.42-1.457 2.437-4.898-.018-3.436-.271-4.75-2.438-4.898zm-6.23 7.12v-4.444l4.778 2.218-4.778 2.226zm2-12.222c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12z" />
                 </svg>
               </StyledSocialLink>
+
+              <StyledSocialLink
+                href="https://www.mixcloud.com/c4ministry/"
+                target="_blank"
+                aria-label="C4 Ministry's MixCloud"
+                rel="noreferrer"
+                isMixCloud
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="#ffffff"
+                  width="33px"
+                >
+                  <title />
+                  <g id="Mixcloud">
+                    <g data-name="&lt;Group&gt;" id="_Group_">
+                      <g data-name="&lt;Group&gt;" id="_Group_2">
+                        <path
+                          d="M14.5,10.5a5,5,0,0,0-9.91-.94A3.5,3.5,0,0,0,4,9.5a3.5,3.5,0,0,0,0,7H14.5a3,3,0,0,0,0-6Z"
+                          data-name="&lt;Path&gt;"
+                          id="_Path_"
+                        />
+                        <path
+                          d="M1.53,10.53a3.5,3.5,0,0,1,4.95,0"
+                          data-name="&lt;Path&gt;"
+                          id="_Path_2"
+                        />
+                        <path
+                          d="M11.36,5.86a5,5,0,0,1,2.79,6.5"
+                          data-name="&lt;Path&gt;"
+                          id="_Path_3"
+                        />
+                      </g>
+                      <path
+                        d="M19.61,16.65a5.94,5.94,0,0,0,0-6.3"
+                        data-name="&lt;Path&gt;"
+                        id="_Path_4"
+                      />
+                      <path
+                        d="M22,18.5a9.08,9.08,0,0,0,0-10"
+                        data-name="&lt;Path&gt;"
+                        id="_Path_5"
+                      />
+                    </g>
+                  </g>
+                </svg>
+              </StyledSocialLink>
             </Styl4edSocialIcons>
           </StyledSocialInner>
           <StyledSocialInner>
@@ -89,6 +145,8 @@ function Footer() {
             <StyledSocialLink
               href="https://venmo.com/c4ministry"
               target="_blank"
+              aria-label="C4 Ministry's Venmo Page"
+              rel="noreferrer"
             >
               <svg
                 fill={colors.white}
@@ -101,10 +159,10 @@ function Footer() {
             </StyledSocialLink>
           </StyledSocialInner>
           <StyledSocialInner copyright>
-            <p>
+            <StyledCopyright>
               &copy; Copyright 2020. California Christ Community Church. All
               rights reserved.
-            </p>
+            </StyledCopyright>
           </StyledSocialInner>
         </StyledSocialContainer>
       </StyledInner>
@@ -200,24 +258,47 @@ const StyledSocialInner = styled.div<{ copyright?: boolean }>`
     margin-top: auto;
     margin-bottom: 0;
   `}
-
-  svg {
-    transition: fill 0.2s ease-in-out;
-
-    :hover {
-      cursor: pointer;
-      fill: ${colors.primary};
-    }
-  }
 `;
 
 const Styl4edSocialIcons = styled.div`
   display: flex;
 `;
 
-const StyledSocialLink = styled.a<{ href: string; target: string }>`
+const StyledSocialLink = styled.a<{
+  href: string;
+  target: string;
+  isMixCloud?: boolean;
+}>`
+  height: 100%;
   margin-right: 1.5em;
+  transition: border-color 0.2s ease-in-out;
   width: max-content;
+
+  ${props =>
+    props.isMixCloud &&
+    `
+    border: 4px solid ${colors.white};
+    border-radius: 50%;
+    padding: .25em;
+  `}
+
+  svg {
+    transition: fill 0.2s ease-in-out;
+  }
+
+  :hover {
+    cursor: pointer;
+    border-color: ${colors.primary};
+
+    svg {
+      cursor: pointer;
+      fill: ${colors.primary};
+    }
+  }
+`;
+
+const StyledCopyright = styled.p`
+  line-height: 1.5em;
 `;
 
 export default Footer;

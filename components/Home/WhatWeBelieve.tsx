@@ -42,7 +42,7 @@ const StyledSection = styled.section<{ lastSection: boolean }>`
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  padding-top: 4em;
+  padding-top: 6em;
   position: relative;
 
   ${props => props.lastSection && `padding-bottom: 6em;`}
