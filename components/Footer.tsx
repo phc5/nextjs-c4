@@ -31,6 +31,10 @@ function Footer() {
             </StyledLocationLink>
             .
           </InfoParagraph>
+          <br />
+          <InfoParagraph>
+            Join our mailing list: Google Group goes here.
+          </InfoParagraph>
         </div>
         <div></div>
         <StyledNavigationList>
@@ -94,14 +98,14 @@ function Footer() {
               <StyledSocialLink
                 href="https://www.mixcloud.com/c4ministry/"
                 target="_blank"
-                aria-label="C4 Ministry's MixCloud"
+                aria-label="C4 Ministry's Mixcloud"
                 rel="noreferrer"
                 isMixCloud
               >
                 <svg
                   viewBox="0 0 24 24"
                   xmlns="http://www.w3.org/2000/svg"
-                  fill="#ffffff"
+                  fill={colors.white}
                   width="33px"
                 >
                   <title />
@@ -171,7 +175,7 @@ function Footer() {
 }
 
 const StyledSection = styled.section`
-  background-color: ${colors.footer};
+  background-color: ${colors.blue};
   border-top: solid 1px rgba(190, 190, 255, 0.2);
   color: ${colors.white};
   padding: 2em 0;
@@ -216,12 +220,11 @@ const StyledNavigationList = styled.ul`
   display: flex;
   flex-direction: column;
   list-style: none;
-  justify-content: flex-end;
 `;
 
 const StyledNavigationLink = styled.a`
   color: ${colors.white};
-  margin-bottom: 2em;
+  margin-bottom: 1.5em;
   text-decoration: none;
   transition: color 0.2s ease-in-out;
 

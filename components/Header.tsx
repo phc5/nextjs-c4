@@ -52,7 +52,7 @@ function Portal({ modalOpen, setModalOpen, currentRoute }) {
           </StyledInner>
           <StyledCloseButton type="button" onClick={() => setModalOpen(false)}>
             <svg
-              fill="#ffffff"
+              fill={colors.white}
               xmlns="http://www.w3.org/2000/svg"
               width="24"
               height="24"

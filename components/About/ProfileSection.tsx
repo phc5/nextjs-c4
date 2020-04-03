@@ -7,7 +7,7 @@ import leadership from '../../data/leadership';
 function ProfileSection({ lastSection }: { lastSection?: boolean }) {
   const profileSections = leadership.map(
     ({ title, name, info, imagePath }, index) => (
-      <StyledSection>
+      <StyledSection key={name}>
         <StyledInner isEven={index % 2 === 0}>
           <StyledImage
             src={imagePath}

@@ -1,15 +1,13 @@
-import styled from 'styled-components';
+// import styled from 'styled-components';
 import Layout from '../components/Layout';
+import PageBanner from '../components/shared/PageBanner';
 
 function Contact() {
   return (
     <Layout>
-      <StyledDiv />
+      <PageBanner title="Contact" subText="☎️" />
     </Layout>
   );
 }
 
-const StyledDiv = styled.div`
-  height: 1000px;
-`;
 export default Contact;

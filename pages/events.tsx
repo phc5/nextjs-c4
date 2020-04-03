@@ -1,15 +1,13 @@
-import styled from 'styled-components';
+// import styled from 'styled-components';
 import Layout from '../components/Layout';
+import PageBanner from '../components/shared/PageBanner';
 
 function Events() {
   return (
     <Layout>
-      <StyledDiv />
+      <PageBanner title="Events" subText="📆" />
     </Layout>
   );
 }
 
-const StyledDiv = styled.div`
-  height: 1000px;
-`;
 export default Events;

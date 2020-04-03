@@ -9,6 +9,10 @@ function Index() {
     <>
       <Head>
         <title>Home | California Christ Community Church</title>
+        <meta
+          name="description"
+          content="California Christ Community Church is a congregation of the Presbyterian Church in America who submit to the Westminster Standards, along with the Nicene Creed, and see them as presenting an accurate and faithful summary of the Bible's teachings."
+        />
       </Head>
       <Layout>
         <Banner />

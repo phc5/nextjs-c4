@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import colors from '../../constants/colors';
 import breakpoints from '../../constants/breakpoints';
 
-function AboutBanner() {
+function PageBanner({ title, subText }: { title: string; subText: string }) {
   let [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
@@ -17,16 +17,11 @@ function AboutBanner() {
       <StyledWrapper>
         <StyledInner isLoaded={isLoaded}>
           <header>
-            <StyledH1>Leadership</StyledH1>
+            <StyledH1>{title}</StyledH1>
           </header>
 
           <StyledSubtitle>
-            <StyledParagraph>
-              The purpose of the Leadership Team is to work with the lead pastor
-              to establish the strategic direction of the church and to provide
-              accountability so that the ongoing ministries of the church are
-              properly established and performed.
-            </StyledParagraph>
+            <StyledParagraph>{subText}</StyledParagraph>
           </StyledSubtitle>
         </StyledInner>
       </StyledWrapper>
@@ -108,4 +103,4 @@ const StyledParagraph = styled.p`
   line-height: 1.5em;
 `;
 
-export default AboutBanner;
+export default PageBanner;
