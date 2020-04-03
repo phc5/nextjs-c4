@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "date-fns": "^2.11.1",
     "next": "9.3.3",
     "next-images": "^1.4.0",
     "node-fetch": "^2.6.0",

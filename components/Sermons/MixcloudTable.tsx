@@ -3,7 +3,7 @@ import { useTable } from 'react-table';
 import styled from 'styled-components';
 import colors from '../../constants/colors';
 
-function SermonsTable({ sermons, iframeRef }) {
+function MixcloudTable({ sermons, iframeRef }) {
   const tableRef = useRef(null);
   const [slug, setSlug] = useState(null);
 
@@ -14,7 +14,7 @@ function SermonsTable({ sermons, iframeRef }) {
   }, []);
 
   useEffect(() => {
-    if (iframeRef && slug !== null) {
+    if (iframeRef && iframeRef.current && slug !== null) {
       iframeRef.current.src = `https://www.mixcloud.com/widget/iframe/?hide_cover=1&light=1&feed=/c4ministry/${slug}/`;
       iframeRef.current.title = slug;
     }
@@ -127,4 +127,4 @@ const StyledTD = styled.td<{ isOdd: boolean }>`
   padding: 1em;
 `;
 
-export default SermonsTable;
+export default MixcloudTable;

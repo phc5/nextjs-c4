@@ -1,45 +1,30 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import SermonsTable from './SermonsTable';
+import YoutubeContent from './YoutubeContent';
 import colors from '../../constants/colors';
+import MixCloudContent from './MixcloudContent';
 
-function ProfileSection({
+function SermonsContent({
   lastSection,
-  sermons
+  sermons,
+  videos
 }: {
   lastSection?: boolean;
   sermons: any;
+  videos: any;
 }) {
-  const iframeRef = useRef(null);
-  const slug = sermons[0].slug;
-
   return (
     <StyledProfileContainer lastSection={lastSection}>
       <StyledSection>
         <StyledInner>
-          <StyledIframeContainer>
-            <iframe
-              ref={iframeRef}
-              width="100%"
-              height="60"
-              src={`https://www.mixcloud.com/widget/iframe/?hide_cover=1&light=1&feed=/c4ministry/${slug}/`}
-              title={slug}
-            ></iframe>
-          </StyledIframeContainer>
-
-          <SermonsTable sermons={sermons} iframeRef={iframeRef} />
-          <StyledListenMore>
-            Listen to more sermons like these{' '}
-            <a
-              href="https://www.mixcloud.com/c4ministry/"
-              target="_blank"
-              aria-label="C4 Ministry's Mixcloud"
-              rel="noreferrer"
-            >
-              here
-            </a>
-            .
-          </StyledListenMore>
+          <StyledMediaSection>
+            <h3>Mixcloud Audio Sermons</h3>
+            <MixCloudContent sermons={sermons} />
+          </StyledMediaSection>
+          <StyledMediaSection>
+            <h3>YouTube Video Sermons</h3>
+            <YoutubeContent videos={videos} />
+          </StyledMediaSection>
         </StyledInner>
       </StyledSection>
     </StyledProfileContainer>
@@ -58,34 +43,24 @@ const StyledSection = styled.section`
 `;
 
 const StyledInner = styled.div`
-  align-items: center;
-  display: flex;
-  flex-direction: column;
   padding: 4em 0 2em 0;
   margin: 0 auto;
   max-width: 65em;
   width: calc(100% - 6em);
 `;
 
-const StyledIframeContainer = styled.div`
-  background-color: ${colors.white};
-  height: 60px;
-  margin-bottom: 2em;
+const StyledMediaSection = styled.div`
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 4em;
   width: 100%;
-`;
 
-const StyledListenMore = styled.p`
-  align-self: flex-end;
-  margin-top: 1.5em;
-
-  a {
-    color: white;
-    transition: color 0.2 ease-in-out;
-
-    :hover {
-      color: ${colors.primary};
-    }
+  h3 {
+    align-self: flex-start;
+    font-size: 1.5em;
+    margin-bottom: 2em;
   }
 `;
 
-export default ProfileSection;
+export default SermonsContent;
