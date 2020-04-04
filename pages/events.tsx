@@ -7,7 +7,7 @@ function Events() {
   return (
     <>
       <Head>
-        <title>Sermons | California Christ Community Church</title>
+        <title>Events | California Christ Community Church</title>
         <meta
           name="description"
           content="View past and future events happening at California Christ Community Church!"

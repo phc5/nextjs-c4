@@ -6,7 +6,7 @@ import colors from '../../constants/colors';
 
 function MixcloudContent({ sermons }) {
   const iframeRef = useRef(null);
-  
+
   if (sermons.length === 0) {
     return (
       <StyledListenMore isError>
@@ -41,7 +41,7 @@ function MixcloudContent({ sermons }) {
 
         <MixcloudTable sermons={sermons} iframeRef={iframeRef} />
         <StyledListenMore>
-          Listen to more sermons like these{' '}
+          Listen to more audio sermons{' '}
           <a
             href="https://www.mixcloud.com/c4ministry/"
             target="_blank"
@@ -65,7 +65,9 @@ const StyledIframeContainer = styled.div`
 `;
 
 const StyledListenMore = styled.p<{ isError?: boolean }>`
-  ${props => !props.isError && `
+  ${props =>
+    !props.isError &&
+    `
     align-self: flex-end;
     margin-top: 1.5em;
   `};

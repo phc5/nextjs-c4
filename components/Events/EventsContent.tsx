@@ -18,7 +18,7 @@ function EventsContent({ lastSection }: { lastSection?: boolean }) {
   }, []);
 
   return (
-    <StyledProfileContainer lastSection={lastSection}>
+    <StyledEventsContainer lastSection={lastSection}>
       <StyledSection>
         <StyledInner>
           <StyledLoader viewBox="25 25 50 50" isIframeLoaded={isIframeLoaded}>
@@ -34,12 +34,13 @@ function EventsContent({ lastSection }: { lastSection?: boolean }) {
           ></StyledIframe>
         </StyledInner>
       </StyledSection>
-    </StyledProfileContainer>
+    </StyledEventsContainer>
   );
 }
 
-const StyledProfileContainer = styled.div<{ lastSection: boolean }>`
+const StyledEventsContainer = styled.div<{ lastSection: boolean }>`
   background-color: ${colors.blue};
+  border-top: solid 2px rgba(190, 190, 255, 0.2);
   padding-top: 4em;
   ${props => props.lastSection && 'padding-bottom: 6em;'}
 `;

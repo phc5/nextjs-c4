@@ -53,7 +53,7 @@ function YoutubeContent({ videos }) {
 
         <YoutubeTable videos={videos} iframeRef={iframeRef} />
         <StyledViewMore>
-          View more sermons like these{' '}
+          Watch more video sermons{' '}
           <a
             href="https://www.youtube.com/channel/UCRKb2u0ePuQ9t6TnKVfe1Gw/videos"
             target="_blank"

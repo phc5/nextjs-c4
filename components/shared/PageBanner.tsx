@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import colors from '../../constants/colors';
 import breakpoints from '../../constants/breakpoints';
 
-function PageBanner({ title, subText }: { title: string; subText: string }) {
+function PageBanner({ title, subText }: { title: string; subText?: string }) {
   let [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
@@ -20,9 +20,11 @@ function PageBanner({ title, subText }: { title: string; subText: string }) {
             <StyledH1>{title}</StyledH1>
           </header>
 
-          <StyledSubtitle>
-            <StyledParagraph>{subText}</StyledParagraph>
-          </StyledSubtitle>
+          {subText && (
+            <StyledSubtitle>
+              <StyledParagraph>{subText}</StyledParagraph>
+            </StyledSubtitle>
+          )}
         </StyledInner>
       </StyledWrapper>
     </StyledSection>
@@ -35,7 +37,7 @@ const StyledSection = styled.section`
   background-repeat: no-repeat;
   background-size: cover;
   color: ${colors.white};
-  height: 50vh;
+  height: 75vh;
   margin-bottom: -6em;
   min-height: 40em;
   position: relative;

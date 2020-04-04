@@ -14,7 +14,7 @@ function SermonsContent({
   videos: any;
 }) {
   return (
-    <StyledProfileContainer lastSection={lastSection}>
+    <StyledSermonsContainer lastSection={lastSection}>
       <StyledSection>
         <StyledInner>
           <StyledMediaSection>
@@ -27,12 +27,13 @@ function SermonsContent({
           </StyledMediaSection>
         </StyledInner>
       </StyledSection>
-    </StyledProfileContainer>
+    </StyledSermonsContainer>
   );
 }
 
-const StyledProfileContainer = styled.div<{ lastSection: boolean }>`
+const StyledSermonsContainer = styled.div<{ lastSection: boolean }>`
   background-color: ${colors.blue};
+  border-top: solid 2px rgba(190, 190, 255, 0.2);
   padding-top: 4em;
   ${props => props.lastSection && 'padding-bottom: 6em;'}
 `;
