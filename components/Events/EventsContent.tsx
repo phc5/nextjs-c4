@@ -18,7 +18,7 @@ function EventsContent({ lastSection }: { lastSection?: boolean }) {
   }, []);
 
   return (
-    <StyledEventsContainer lastSection={lastSection}>
+    <StyledEventsContainer lastSection={lastSection} data-scroll-js>
       <StyledSection>
         <StyledInner>
           <StyledLoader viewBox="25 25 50 50" isIframeLoaded={isIframeLoaded}>

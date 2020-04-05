@@ -28,7 +28,7 @@ function ProfileSection({ lastSection }: { lastSection?: boolean }) {
   );
 
   return (
-    <StyledProfileContainer lastSection={lastSection}>
+    <StyledProfileContainer lastSection={lastSection} data-scroll-js>
       {profileSections}
     </StyledProfileContainer>
   );

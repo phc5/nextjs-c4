@@ -6,7 +6,7 @@ import breakpoints from '../../constants/breakpoints';
 
 function MembersContent({ lastSection }: { lastSection?: boolean }) {
   return (
-    <StyledMembersContainer lastSection={lastSection}>
+    <StyledMembersContainer lastSection={lastSection} data-scroll-js>
       <StyledSection>
         <StyledInner>
           <StyledInfoDiv>

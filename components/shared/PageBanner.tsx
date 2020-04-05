@@ -1,15 +1,43 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import colors from '../../constants/colors';
 import breakpoints from '../../constants/breakpoints';
 
 function PageBanner({ title, subText }: { title: string; subText?: string }) {
+  const arrowRef = useRef(null);
   let [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
     setTimeout(() => {
       setIsLoaded(true);
     }, 500);
+
+    if (arrowRef && arrowRef.current) {
+      arrowRef.current.addEventListener('click', () => {
+        const contentDiv = document.querySelector('[data-scroll-js]');
+        if (contentDiv !== null && contentDiv instanceof HTMLElement) {
+          let start = null;
+          const scrollEnd = contentDiv.offsetTop + 39;
+
+          function easeInOutQuad(t) {
+            return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+          }
+
+          function step(timestamp) {
+            if (!start) start = timestamp;
+            let progress = Math.min(1, (timestamp - start) / 1000);
+            const easing = easeInOutQuad(progress);
+            window.scroll(0, Math.ceil(easing * scrollEnd));
+
+            if (progress < 1) {
+              window.requestAnimationFrame(step);
+            }
+          }
+
+          window.requestAnimationFrame(step);
+        }
+      });
+    }
   }, []);
 
   return (
@@ -26,19 +54,24 @@ function PageBanner({ title, subText }: { title: string; subText?: string }) {
             </StyledSubtitle>
           )}
         </StyledInner>
-        <StyledDownArrow isLoaded={isLoaded}>
-          <svg width="18px" height="17px" viewBox="-1 0 18 17" fill="#ffffff">
+        <StyledDownArrow isLoaded={isLoaded} ref={arrowRef}>
+          <svg
+            width="18px"
+            height="17px"
+            viewBox="-1 0 18 17"
+            fill={colors.white}
+          >
             <g>
               <polygon
                 className="arrow"
                 points="16.3746667 8.33860465 7.76133333 15.3067621 6.904 14.3175671 14.2906667 8.34246869 6.908 2.42790698 7.76 1.43613596"
-                stroke="#ffffff"
+                stroke={colors.white}
                 strokeWidth="1"
               ></polygon>
               <polygon
                 className="arrow-fixed"
                 points="16.3746667 8.33860465 7.76133333 15.3067621 6.904 14.3175671 14.2906667 8.34246869 6.908 2.42790698 7.76 1.43613596"
-                stroke="#ffffff"
+                stroke={colors.white}
                 strokeWidth="1"
               ></polygon>
             </g>

@@ -15,7 +15,7 @@ function BlogContent({
   tumblrPosts: any[];
 }) {
   return (
-    <StyledProfileContainer lastSection={lastSection}>
+    <StyledProfileContainer lastSection={lastSection} data-scroll-js>
       <StyledSection>
         <StyledInner>
           <StyledBlogTypeSection>

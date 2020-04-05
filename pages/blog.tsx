@@ -19,7 +19,11 @@ function Blog({ mediumPosts, tumblrPosts }) {
           title="Blog"
           subText="Read the writings and thoughts of our lead pastor Daniel Park."
         />
-        <BlogContent mediumPosts={mediumPosts} tumblrPosts={tumblrPosts} lastSection />
+        <BlogContent
+          mediumPosts={mediumPosts}
+          tumblrPosts={tumblrPosts}
+          lastSection
+        />
       </Layout>
     </>
   );
@@ -60,14 +64,12 @@ export async function getStaticProps() {
   const tumblrJson = await tumblrData.json();
   const tumblrPosts = await tumblrJson.response.posts.map(
     ({ title, body, tags, post_url, date }) => {
-      const trimmedString = body
-      .replace(/(<([^>]+)>)/g, '')
-      .substr(0, 240);
-    const snippet =
-      trimmedString.substr(
-        0,
-        Math.min(trimmedString.length, trimmedString.lastIndexOf(' '))
-      ) + '...';
+      const trimmedString = body.replace(/(<([^>]+)>)/g, '').substr(0, 240);
+      const snippet =
+        trimmedString.substr(
+          0,
+          Math.min(trimmedString.length, trimmedString.lastIndexOf(' '))
+        ) + '...';
 
       return {
         title,

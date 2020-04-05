@@ -14,7 +14,7 @@ function SermonsContent({
   videos: any;
 }) {
   return (
-    <StyledSermonsContainer lastSection={lastSection}>
+    <StyledSermonsContainer lastSection={lastSection} data-scroll-js>
       <StyledSection>
         <StyledInner>
           <StyledMediaSection>
