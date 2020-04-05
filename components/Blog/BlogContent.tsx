@@ -1,61 +1,19 @@
 import React from 'react';
 import styled from 'styled-components';
+import MediumArticles from './MediumArticles';
+import TumblrArticles from './TumblrArticles';
 import colors, { tagColors } from '../../constants/colors';
 // import breakpoints from '../../constants/breakpoints';
 
 function BlogContent({
   lastSection,
-  posts
+  mediumPosts,
+  tumblrPosts
 }: {
   lastSection?: boolean;
-  posts: any[];
+  mediumPosts: any[];
+  tumblrPosts: any[];
 }) {
-  const postElements = posts.map(
-    ({ author, content, date, link, tags, title }) => {
-      let tagColorArray = [...tagColors];
-
-      const tagElements = tags.map(tag => {
-        const randomIndex = Math.floor(
-          Math.random() * tagColorArray.length
-        ).toString();
-
-        const randomColor = tagColorArray[randomIndex];
-        tagColorArray.splice(parseInt(randomIndex), 1);
-
-        return (
-          <StyledTag
-            key={tag}
-            color={randomColor}
-            href={`https://www.medium.com/tag/${tag}`}
-            target="_blank"
-            rel="noreferrer"
-            aria-label={`Medium Tag - ${tag}`}
-          >
-            {tag}
-          </StyledTag>
-        );
-      });
-
-      return (
-        <StyledPost key={title}>
-          <StyledPostLink
-            href={link}
-            target="_blank"
-            rel="noreferrer"
-            aria-label={`Medium Blog Post - ${title}`}
-          >
-            <h3>{title}</h3>
-          </StyledPostLink>
-          <StyledInfo>
-            By {author} &middot; {date}
-          </StyledInfo>
-          <StyledSnippet>{content}</StyledSnippet>
-          <div>Tags: {tagElements}</div>
-        </StyledPost>
-      );
-    }
-  );
-
   return (
     <StyledProfileContainer lastSection={lastSection}>
       <StyledSection>
@@ -80,15 +38,17 @@ function BlogContent({
               </StyledSnippet>
               <div>
                 Tags: <StyledTag color={tagColors[0]}>Grace</StyledTag>
-                <StyledTag color={tagColors[9]}>Westminster (PA)</StyledTag>
                 <StyledTag color={tagColors[2]}>Christianity</StyledTag>
                 <StyledTag color={tagColors[3]}>Gospel</StyledTag>
+                <StyledTag color={tagColors[9]}>Westminster (PA)</StyledTag>
               </div>
             </StyledPost>
           </StyledBlogTypeSection>
           <StyledBlogTypeSection>
-            <h3>Medium Articles</h3>
-            {postElements}
+            <MediumArticles mediumPosts={mediumPosts} />
+          </StyledBlogTypeSection>
+          <StyledBlogTypeSection>
+            <TumblrArticles tumblrPosts={tumblrPosts} />
           </StyledBlogTypeSection>
         </StyledInner>
       </StyledSection>
@@ -127,16 +87,9 @@ const StyledBlogTypeSection = styled.div`
 `;
 
 const StyledPost = styled.div`
-  margin-bottom: 1.75em;
-`;
-
-const StyledPostLink = styled.a`
-  color: ${colors.white};
-
-  h3 {
-    font-size: 1.75em;
-    margin-bottom: 0.75em;
-  }
+  border-bottom: 1px solid ${colors.paleblue};
+  margin-bottom: 3em;
+  padding-bottom: 2em;
 `;
 
 const StyledInfo = styled.span`

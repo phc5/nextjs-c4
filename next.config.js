@@ -8,7 +8,8 @@ module.exports = withBundleAnalyzer(
   withImages({
     env: {
       youtubeApiKey: process.env.YOUTUBE_API_KEY,
-      youtubeChannelId: process.env.YOUTUBE_CHANNEL_ID
+      youtubeChannelId: process.env.YOUTUBE_CHANNEL_ID,
+      tumblrApiKey: process.env.TUMBLR_API_KEY
     }
   })
 );

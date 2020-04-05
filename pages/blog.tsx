@@ -4,7 +4,7 @@ import Layout from '../components/Layout';
 import PageBanner from '../components/shared/PageBanner';
 import BlogContent from '../components/Blog/BlogContent';
 
-function Blog({ posts }) {
+function Blog({ mediumPosts, tumblrPosts }) {
   return (
     <>
       <Head>
@@ -19,7 +19,7 @@ function Blog({ posts }) {
           title="Blog"
           subText="Read the writings and thoughts of our lead pastor Daniel Park."
         />
-        <BlogContent posts={posts} lastSection />
+        <BlogContent mediumPosts={mediumPosts} tumblrPosts={tumblrPosts} lastSection />
       </Layout>
     </>
   );
@@ -31,12 +31,12 @@ export async function getStaticProps() {
   );
 
   const mediumJson = await mediumData.json();
-  const posts = mediumJson.items.map(
+  const mediumPosts = mediumJson.items.map(
     ({ title, pubDate, author, description, categories, link }) => {
       const trimmedString = description
         .replace(/(<([^>]+)>)/g, '')
         .substr(0, 240);
-      const finalString =
+      const snippet =
         trimmedString.substr(
           0,
           Math.min(trimmedString.length, trimmedString.lastIndexOf(' '))
@@ -44,7 +44,7 @@ export async function getStaticProps() {
 
       return {
         author,
-        content: finalString,
+        content: snippet,
         date: pubDate.split(' ')[0],
         link,
         tags: categories,
@@ -53,9 +53,36 @@ export async function getStaticProps() {
     }
   );
 
+  const tumblrData = await fetch(
+    `https://api.tumblr.com/v2/blog/c4ministry-blog.tumblr.com/posts/text?filter=text&api_key=${process.env.tumblrApiKey}`
+  );
+
+  const tumblrJson = await tumblrData.json();
+  const tumblrPosts = await tumblrJson.response.posts.map(
+    ({ title, body, tags, post_url, date }) => {
+      const trimmedString = body
+      .replace(/(<([^>]+)>)/g, '')
+      .substr(0, 240);
+    const snippet =
+      trimmedString.substr(
+        0,
+        Math.min(trimmedString.length, trimmedString.lastIndexOf(' '))
+      ) + '...';
+
+      return {
+        title,
+        body: snippet,
+        tags,
+        post_url,
+        date: date.split(' ')[0]
+      };
+    }
+  );
+
   return {
     props: {
-      posts: posts || []
+      mediumPosts: mediumPosts || [],
+      tumblrPosts: tumblrPosts || []
     }
   };
 }
