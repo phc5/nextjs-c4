@@ -22,9 +22,5 @@ export default [
   {
     route: '/members',
     name: 'Members'
-  },
-  {
-    route: '/contact',
-    name: 'Contact'
   }
 ];

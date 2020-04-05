@@ -26,6 +26,24 @@ function PageBanner({ title, subText }: { title: string; subText?: string }) {
             </StyledSubtitle>
           )}
         </StyledInner>
+        <StyledDownArrow isLoaded={isLoaded}>
+          <svg width="18px" height="17px" viewBox="-1 0 18 17" fill="#ffffff">
+            <g>
+              <polygon
+                className="arrow"
+                points="16.3746667 8.33860465 7.76133333 15.3067621 6.904 14.3175671 14.2906667 8.34246869 6.908 2.42790698 7.76 1.43613596"
+                stroke="#ffffff"
+                strokeWidth="1"
+              ></polygon>
+              <polygon
+                className="arrow-fixed"
+                points="16.3746667 8.33860465 7.76133333 15.3067621 6.904 14.3175671 14.2906667 8.34246869 6.908 2.42790698 7.76 1.43613596"
+                stroke="#ffffff"
+                strokeWidth="1"
+              ></polygon>
+            </g>
+          </svg>
+        </StyledDownArrow>
       </StyledWrapper>
     </StyledSection>
   );
@@ -37,11 +55,10 @@ const StyledSection = styled.section`
   background-repeat: no-repeat;
   background-size: cover;
   color: ${colors.white};
-  height: 75vh;
-  margin-bottom: -6em;
-  min-height: 40em;
+  height: 100vh;
+  margin-bottom: -3.25em;
   position: relative;
-  top: -6em;
+  top: -3.25em;
 
   @media screen and (${breakpoints.large}) {
     background-attachment: fixed;
@@ -103,6 +120,66 @@ const StyledSubtitle = styled.div`
 
 const StyledParagraph = styled.p`
   line-height: 1.5em;
+`;
+
+const StyledDownArrow = styled.span<{ isLoaded: boolean }>`
+  bottom: 5em;
+  opacity: ${props => (props.isLoaded ? 1 : 0)};
+  position: absolute;
+  right: 50%;
+  transform: ${props => (props.isLoaded ? 'none' : 'translate3d(0, -4em, 0)')};
+  transition: opacity 1.5s ease, transform 0.5s ease-out;
+
+  svg {
+    width: 3em;
+    height: auto;
+    cursor: pointer;
+    overflow: visible;
+    transform: rotate(90deg);
+
+    polygon {
+      transition: all 0.5s cubic-bezier(.2,1,.3,1);
+    }
+
+    &:hover polygon {
+      transition: all 1s cubic-bezier(.2,1,.3,1);
+      fill: ${colors.primary};
+      stroke: ${colors.primary};
+    }
+      
+    &:hover .arrow {
+      animation: arrow-anim 1.5s cubic-bezier(.2,1,.3,1) infinite;
+    }
+    &:hover .arrow-fixed {
+      animation: arrow-fixed-anim 1.5s cubic-bezier(.2,1,.3,1) infinite;
+    }
+  }
+}
+
+@keyframes arrow-anim {
+	0% {
+		opacity: 1;
+		transform: translateX(0);
+	}
+	5% {
+		transform: translateX(-0.1rem);
+	}
+	100% {
+		transform: translateX(1rem);
+		opacity: 0;
+	}
+}
+
+@keyframes arrow-fixed-anim {
+	5% {
+		opacity: 0;
+	}
+	20% {
+		opacity: 0.4;
+	}
+	100% {
+		opacity: 1;
+	}
 `;
 
 export default PageBanner;

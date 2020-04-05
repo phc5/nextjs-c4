@@ -20,20 +20,41 @@ function Footer() {
           <InfoParagraph>Sunday Service begins at 12:30pm.</InfoParagraph>
           <br />
           <InfoParagraph>
-            Our church is located at{' '}
-            <StyledLocationLink
+            Our church is located at 8381 Katella Ave, Suite N, Stanton, CA
+            90680.{' '}
+            <StyledLink
               href="https://goo.gl/maps/GFDRM4vtH4MqydPm9"
               target="_blank"
               aria-label="C4 Ministry's location on Google Maps"
               rel="noreferrer"
             >
-              8381 Katella Ave, Suite N, Stanton, CA 90680
-            </StyledLocationLink>
+              (Google Maps)
+            </StyledLink>
+          </InfoParagraph>
+          <br />
+          <InfoParagraph>
+            Join our{' '}
+            <StyledLink
+              href="https://groups.google.com/forum/#!forum/c4ministry/join"
+              target="_blank"
+              aria-label="C4 Ministry's Google Group Mailing List "
+              rel="noreferrer"
+            >
+              mailing list
+            </StyledLink>
             .
           </InfoParagraph>
           <br />
           <InfoParagraph>
-            Join our mailing list: Google Group goes here.
+            Have questions or comments? <br />
+            <StyledLink
+              href="https://docs.google.com/forms/d/18pE8faIRUlseTZZPGx59sRzotevhqU02yLyjV6FTENY/formResponse"
+              target="_blank"
+              aria-label="C4 Ministry's Contact Google form"
+              rel="noreferrer"
+            >
+              Contact Us
+            </StyledLink>
           </InfoParagraph>
         </div>
         <div></div>
@@ -202,7 +223,7 @@ const StyledFooterSectionName = styled.h4`
   margin-bottom: 1.25em;
 `;
 
-const StyledLocationLink = styled.a`
+const StyledLink = styled.a`
   color: ${colors.white};
   margin-bottom: 2em;
   transition: color 0.2s ease-in-out;
@@ -216,7 +237,7 @@ const StyledLocationLink = styled.a`
   }
 `;
 
-const StyledNavigationList = styled.ul`
+const StyledNavigationList = styled.div`
   display: flex;
   flex-direction: column;
   list-style: none;
@@ -242,7 +263,7 @@ const StyledNavigationLink = styled.a`
 `;
 
 const InfoParagraph = styled.p`
-  line-height: 1.5em;
+  line-height: 1.75em;
 `;
 
 const StyledSocialContainer = styled.div`

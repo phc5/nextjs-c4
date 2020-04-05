@@ -9,3 +9,23 @@ export default {
   transparent: '#ffffff00',
   white: '#ffffff'
 };
+
+export const tagColors = [
+  'crimson',
+  'deeppink',
+  'dodgerblue',
+  'goldenrod',
+  'indianred',
+  'lightcoral',
+  'maroon',
+  'mediumaquamarine',
+  'mediumorchid',
+  'olivedrab',
+  'peru',
+  'royalblue',
+  'salmon',
+  'seagreen',
+  'sienna',
+  'slategray',
+  'tomato'
+];

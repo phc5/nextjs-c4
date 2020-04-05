@@ -4,5 +4,5 @@ export default [
   ['Isaac', 'Justin'],
   ['Abe', 'Paul'],
   ['Ellen', 'Becky'],
-  ['Daniel Yoon', 'JC']
+  ['DYoon', 'JC']
 ];

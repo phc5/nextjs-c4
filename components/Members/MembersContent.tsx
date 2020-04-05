@@ -1,20 +1,10 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import CleanupTable from './CleanupTable';
 import colors from '../../constants/colors';
 import breakpoints from '../../constants/breakpoints';
 
 function MembersContent({ lastSection }: { lastSection?: boolean }) {
-  const instructionsButtonRef = useRef(null);
-  const [expanded, setExpanded] = useState(false);
-
-  useEffect(() => {
-    if (instructionsButtonRef && instructionsButtonRef.current) {
-      instructionsButtonRef.current.addEventListener('click', () => {
-        setExpanded(currentExpanded => !currentExpanded);
-      });
-    }
-  }, []);
   return (
     <StyledMembersContainer lastSection={lastSection}>
       <StyledSection>
@@ -43,32 +33,34 @@ function MembersContent({ lastSection }: { lastSection?: boolean }) {
               <span>Join Mailing List</span>
             </StyledInfoButton>
           </StyledInfoDiv>
-          <StyledInfoDiv>
+          <StyledInfoDiv cleanup>
             <h3>Cleanup Schedule</h3>
             <StyledCleanupInfo>
               <CleanupTable />
-              <StyledCleanupInstructions expanded={expanded}>
-                <h4 ref={instructionsButtonRef}>Cleanup Instructions:</h4>
-                <ul>
-                  <li>Say hello to our senior pastor, James Park!</li>
-                  <li>Vacuum carpet upstairs and downstairs</li>
-                  <li>Wipe down dining tables</li>
-                  <li>
-                    Sweep downstairs floor (kitchen, dining, &amp; sanctuary)
-                  </li>
-                  <li>Mop floor (kitchen, dining, &amp; sanctuary)</li>
-                  <li>Clean mirrors and toilets in both bathroom</li>
+            </StyledCleanupInfo>
+          </StyledInfoDiv>
+          <StyledInfoDiv cleanup>
+            <h3>Cleanup Instructions</h3>
+            <StyledCleanupInfo>
+              <ul>
+                <li>Say hello to our senior pastor, James Park!</li>
+                <li>Vacuum carpet upstairs and downstairs</li>
+                <li>Wipe down dining tables</li>
+                <li>
+                  Sweep downstairs floor (kitchen, dining, &amp; sanctuary)
+                </li>
+                <li>Mop floor (kitchen, dining, &amp; sanctuary)</li>
+                <li>Clean mirrors and toilets in both bathroom</li>
 
-                  <li>Wash dishes</li>
-                  <li>Organize elementary, CCM, and meeting rooms</li>
-                  <li>
-                    Take out trash and replace trash bags (kitchen, bathrooms,
-                    &amp; upstairs)
-                  </li>
-                  <li>Wash your hands</li>
-                  <li>Say goodbye to Pastor James Park!</li>
-                </ul>
-              </StyledCleanupInstructions>
+                <li>Wash dishes</li>
+                <li>Organize elementary, CCM, and meeting rooms</li>
+                <li>
+                  Take out trash and replace trash bags (kitchen, bathrooms,
+                  &amp; upstairs)
+                </li>
+                <li>Wash your hands</li>
+                <li>Say goodbye to Pastor James Park!</li>
+              </ul>
             </StyledCleanupInfo>
           </StyledInfoDiv>
         </StyledInner>
@@ -90,8 +82,8 @@ const StyledSection = styled.section`
 `;
 
 const StyledInner = styled.div`
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr 4fr;
   margin-bottom: 4em;
   padding: 4em 0 2em 0;
   margin: 0 auto;
@@ -99,8 +91,10 @@ const StyledInner = styled.div`
   width: calc(100% - 6em);
 `;
 
-const StyledInfoDiv = styled.div`
-  margin-bottom: 2.5em;
+const StyledInfoDiv = styled.div<{ cleanup?: boolean }>`
+  margin-bottom: 3.5em;
+  margin-right: 4em;
+
   h3 {
     border-bottom: 1px solid ${colors.white};
     font-size: 1.5em;
@@ -113,14 +107,14 @@ const StyledInfoDiv = styled.div`
 const StyledInfoButton = styled.a`
   background-color: #282b52;
   border: 1px solid ${colors.white};
-  border-radius: 0.5em;
+  border-radius: 0.25em;
   color: white;
   display: inline-block;
   font-family: inherit;
   font-size: inherit;
   outline: none;
   overflow: hidden;
-  padding: 0.5em 1em;
+  padding: 1em 1em;
   position: relative;
   text-decoration: none;
   transition: color 0.4s ease-in-out;
@@ -167,15 +161,12 @@ const StyledCleanupInfo = styled.div`
       margin-bottom: 0;
     }
   }
-`;
 
-const StyledCleanupInstructions = styled.div<{ expanded?: boolean }>`
-  h4 {
-    font-size: 1.25em;
-    margin-bottom: 1em;
-  }
   ul {
+    padding-left: 1.25em;
+
     li {
+      list-style: initial;
       margin-bottom: 0.5em;
     }
   }
