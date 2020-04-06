@@ -18,9 +18,6 @@ function MediumArticles({ mediumPosts }) {
           <StyledTag
             key={tag}
             color={randomColor}
-            href={`https://www.medium.com/tag/${tag}`}
-            target="_blank"
-            rel="noreferrer"
             aria-label={`Medium Tag - ${tag}`}
           >
             {tag}
@@ -88,7 +85,7 @@ const StyledSnippet = styled.p`
   margin-bottom: 0.5em;
 `;
 
-const StyledTag = styled.a`
+const StyledTag = styled.span`
   display: inline-block;
   margin: 0.5em 0.25em;
   padding: 0.5em 1em;

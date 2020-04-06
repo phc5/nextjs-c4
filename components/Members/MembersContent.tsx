@@ -34,7 +34,7 @@ function MembersContent({ lastSection }: { lastSection?: boolean }) {
             </StyledInfoButton>
           </StyledInfoDiv>
           <StyledInfoDiv cleanup>
-            <h3>Cleanup Schedule</h3>
+            <h3>Cleanup Rotation</h3>
             <StyledCleanupInfo>
               <CleanupTable />
             </StyledCleanupInfo>
