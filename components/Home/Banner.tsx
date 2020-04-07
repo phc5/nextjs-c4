@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import DownArrow from '../shared/DownArrow';
 import colors from '../../constants/colors';
 import breakpoints from '../../constants/breakpoints';
 
@@ -33,6 +34,7 @@ function Banner() {
               </StyledParagraph>
             </StyledSubtitle>
           </StyledInner>
+          <DownArrow isLoaded={isLoaded} />
         </StyledWrapper>
       </StyledSection>
     </>

@@ -5,7 +5,7 @@ import breakpoints from '../../constants/breakpoints';
 
 function Ministry() {
   return (
-    <StyledSection>
+    <StyledSection data-scroll-js>
       <StyledMission first>
         <h3>Who We Are</h3>
         <p>
