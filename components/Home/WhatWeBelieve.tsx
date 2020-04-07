@@ -4,15 +4,15 @@ import colors from '../../constants/colors';
 import breakpoints from '../../constants/breakpoints';
 import whatWeBelieveData from '../../data/whatWeBelieve';
 
-function WhatWeBelieve({ lastSection }: { lastSection?: boolean }) {
+function WhatWeBelieve() {
   const content = whatWeBelieveData.map(
     ({ title, description }, contentIndex) => {
       return (
-        <StyledInnerDiv first={contentIndex === 0} key={title}>
+        <StyledInnerDiv third={contentIndex === 2} key={title}>
           <h3>{title}</h3>
           {description.map((paragraph, paragraphIndex) => (
             <StyledParagraph
-              first={contentIndex === 0}
+              third={contentIndex === 2}
               key={`${title}-paragraph-${paragraphIndex}`}
             >
               {paragraph}
@@ -24,13 +24,13 @@ function WhatWeBelieve({ lastSection }: { lastSection?: boolean }) {
   );
 
   return (
-    <StyledSection lastSection={lastSection}>
+    <StyledSection data-scroll-js>
       <StyledInner>{content}</StyledInner>
     </StyledSection>
   );
 }
 
-const StyledSection = styled.section<{ lastSection: boolean }>`
+const StyledSection = styled.section`
   background: linear-gradient(
       to bottom,
       rgba(0, 0, 0, 0.5) 0%,
@@ -42,10 +42,8 @@ const StyledSection = styled.section<{ lastSection: boolean }>`
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  padding-top: 6em;
+  padding: 4em 0;
   position: relative;
-
-  ${props => props.lastSection && `padding-bottom: 6em;`}
 
   @media screen and (${breakpoints.large}) {
     background-attachment: fixed;
@@ -77,25 +75,31 @@ const StyledInner = styled.div`
     }
   }
 
-  & > div:first-child {
-    grid-column: 1 / -1;
+  @media screen and (${breakpoints.medium}) {
+    & > div:nth-child(2) {
+      grid-column: 2 / 4;
+    }
+
+    & > div:nth-child(3) {
+      grid-column: 1 / -1;
+    }
   }
 `;
 
-const StyledInnerDiv = styled.div<{ first: boolean }>`
-  margin-bottom: 2.5em;
+const StyledInnerDiv = styled.div<{ third: boolean }>`
+  margin-bottom: 3em;
   justify-content: space-between;
 `;
 
-const StyledParagraph = styled.p<{ first?: boolean }>`
+const StyledParagraph = styled.p<{ third?: boolean }>`
   color: ${colors.white};
   font-size: 1.1em;
   line-height: 1.65;
-  ${props => props.first && 'padding-bottom: 1em;'}
+  ${props => props.third && 'padding-bottom: 1em;'}
   
 
   @media screen and (${breakpoints.medium}) {
-    ${props => !props.first && 'padding-right: 2em;'}
+    ${props => !props.third && 'padding-right: 2em;'}
   }
 `;
 

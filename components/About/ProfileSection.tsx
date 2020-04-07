@@ -62,7 +62,7 @@ const StyledInner = styled.div<{ isEven: boolean }>`
 
 const StyledImage = styled.img<{ isEven: boolean }>`
   margin: 0 0 4em 0;
-  width: 300px;
+  width: 200px;
 
   @media screen and (${breakpoints.small}) {
     margin: ${props => (props.isEven ? '0 4em 0 0' : '0 0 0 4em')};
@@ -91,7 +91,7 @@ const StyledH2 = styled.h2`
     content: '';
     display: block;
     height: 1px;
-    margin: 0.325em 0 0.5em 0;
+    margin: em 0 0.5em 0;
   }
 
   @media screen and (${breakpoints.small}) {
@@ -106,7 +106,7 @@ const StyledH3 = styled.h3`
 
 const StyledInfoParagraph = styled.p`
   font-family: 'OpenSansRegular';
-  font-size: 1em;
+  font-size: 1.1em;
   color: ${colors.white};
   line-height: 1.65;
   margin: 0 0 1em 0;

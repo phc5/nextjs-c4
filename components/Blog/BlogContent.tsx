@@ -77,13 +77,13 @@ const StyledInner = styled.div`
   width: calc(100% - 6em);
 
   h3 {
-    font-size: 2em;
+    font-size: 1.75em;
     margin-bottom: 1em;
   }
 `;
 
 const StyledBlogTypeSection = styled.div`
-  margin-bottom: 4em;
+  margin-bottom: 5em;
 `;
 
 const StyledPost = styled.div`
@@ -98,7 +98,7 @@ const StyledInfo = styled.span`
 `;
 
 const StyledSnippet = styled.p`
-  font-size: 1.25em;
+  font-size: 1.1em;
   line-height: 1.25em;
   margin-bottom: 0.5em;
 `;

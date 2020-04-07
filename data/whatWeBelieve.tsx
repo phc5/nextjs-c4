@@ -1,5 +1,17 @@
 export default [
   {
+    title: 'WHO WE ARE',
+    description: [
+      "C4 is a congregation of the Presbyterian Church in America. We submit to the Westminster Standards along with the Nicene Creed, and see them as presenting an accurate and faithful summary of the Bible's teachings."
+    ]
+  },
+  {
+    title: 'MISSION TO THE CITY',
+    description: [
+      'We are providentially located in the city of Stanton, Orange County, California. And as part of the city, we want to be faithful followers of God; because God cares for the city of Stanton -- and the world for that matter -- we should care for them as well! That is our purpose. Therefore at C4, we are not seeking to just occupy a building, but to engage the city with the Gospel; trying to be an example of what a community is to look like for the city.'
+    ]
+  },
+  {
     title: 'HOLISTIC WORSHIP',
     description: [
       'We believe that as God’s creation we are first and foremost Worshipers. We do this by worshiping the Lord with all our mind, soul and might. We want our church to be theologically sounded, passionate in worship, and socially active in ministry.',

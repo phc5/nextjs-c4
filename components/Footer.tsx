@@ -197,7 +197,7 @@ function Footer() {
 
 const StyledSection = styled.section`
   background-color: ${colors.blue};
-  border-top: solid 2px rgba(190, 190, 255, 0.2);
+  border-top: 1px solid rgba(190, 190, 255, 0.2);
   color: ${colors.white};
   padding: 2em 0;
   position: relative;

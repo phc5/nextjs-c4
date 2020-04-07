@@ -1,7 +1,6 @@
 import Head from 'next/head';
 import Layout from '../components/Layout';
 import Banner from '../components/Home/Banner';
-import Ministry from '../components/Home/Ministry';
 import WhatWeBelieve from '../components/Home/WhatWeBelieve';
 
 function Index() {
@@ -16,8 +15,7 @@ function Index() {
       </Head>
       <Layout>
         <Banner />
-        <Ministry />
-        <WhatWeBelieve lastSection />
+        <WhatWeBelieve />
       </Layout>
     </>
   );

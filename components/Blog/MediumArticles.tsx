@@ -55,12 +55,17 @@ function MediumArticles({ mediumPosts }) {
 export default MediumArticles;
 
 const StyledBlogType = styled.h2`
-  font-size: 2em;
+  font-size: 2.25em;
   margin-bottom: 0.75em;
 `;
 
 const StyledPostLink = styled.a`
   color: ${colors.white};
+  transition: color 0.2s ease-in-out;
+
+  :hover {
+    color: ${colors.primary};
+  }
 
   h3 {
     font-size: 1.75em;
@@ -80,7 +85,7 @@ const StyledInfo = styled.span`
 `;
 
 const StyledSnippet = styled.p`
-  font-size: 1.25em;
+  font-size: 1.1em;
   line-height: 1.25em;
   margin-bottom: 0.5em;
 `;

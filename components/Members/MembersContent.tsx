@@ -33,13 +33,25 @@ function MembersContent({ lastSection }: { lastSection?: boolean }) {
               <span>Join Mailing List</span>
             </StyledInfoButton>
           </StyledInfoDiv>
-          <StyledInfoDiv cleanup>
+          <StyledInfoDiv>
+            <h3>Online Offering/Tithe</h3>
+            <StyledInfoButton
+              type="button"
+              href="https://venmo.com/c4ministry"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="C4's Venmo"
+            >
+              <span>Venmo</span>
+            </StyledInfoButton>
+          </StyledInfoDiv>
+          <StyledInfoDiv>
             <h3>Cleanup Rotation</h3>
             <StyledCleanupInfo>
               <CleanupTable />
             </StyledCleanupInfo>
           </StyledInfoDiv>
-          <StyledInfoDiv cleanup>
+          <StyledInfoDiv cleanupInstructions>
             <h3>Cleanup Instructions</h3>
             <StyledCleanupInfo>
               <ul>
@@ -83,17 +95,21 @@ const StyledSection = styled.section`
 
 const StyledInner = styled.div`
   display: grid;
-  grid-template-columns: 1fr 4fr;
   margin-bottom: 4em;
   padding: 4em 0 2em 0;
   margin: 0 auto;
   max-width: 65em;
   width: calc(100% - 6em);
+
+  @media screen and (${breakpoints.small}) {
+    grid-template-columns: 1fr 2fr 2fr;
+  }
 `;
 
-const StyledInfoDiv = styled.div<{ cleanup?: boolean }>`
-  margin-bottom: 3.5em;
+const StyledInfoDiv = styled.div<{ cleanupInstructions?: boolean }>`
+  margin-bottom: 4em;
   margin-right: 4em;
+  ${props => props.cleanupInstructions && `grid-column: 2 / -1;`}
 
   h3 {
     border-bottom: 1px solid ${colors.white};
@@ -112,10 +128,12 @@ const StyledInfoButton = styled.a`
   display: inline-block;
   font-family: inherit;
   font-size: inherit;
+  min-width: 150px;
   outline: none;
   overflow: hidden;
   padding: 1em 1em;
   position: relative;
+  text-align: center;
   text-decoration: none;
   transition: color 0.4s ease-in-out;
   z-index: 1;

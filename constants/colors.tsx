@@ -1,6 +1,5 @@
 export default {
-  blue: '#2a2f4a',
-  cyan: '#10aea8',
+  blue: '#111c30',
   disabled: '#334455',
   green: '#47554F',
   offsetgrey: '#D4D4FF08',
