@@ -1,8 +1,14 @@
 import { AppProps } from 'next/app';
+import Router from 'next/router';
 import { ThemeProvider, createGlobalStyle } from 'styled-components';
+import * as gtag from '../utils/gtag';
 import '../global.css';
 
 const theme = {};
+
+Router.events.on('routeChangeComplete', url => {
+  gtag.pageview(url);
+});
 
 const GlobalStyle = createGlobalStyle`
   /* open-sans-regular - latin */
