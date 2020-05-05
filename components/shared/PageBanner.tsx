@@ -63,13 +63,14 @@ const StyledWrapper = styled.div`
 `;
 
 const StyledInner = styled.div<{ isLoaded: boolean }>`
-  filter: ${props => (props.isLoaded ? 'none' : 'blur(0.125em)')};
+  filter: ${(props) => (props.isLoaded ? 'none' : 'blur(0.125em)')};
   margin: 0 auto;
   max-width: 65em;
-  opacity: ${props => (props.isLoaded ? 1 : 0)};
+  opacity: ${(props) => (props.isLoaded ? 1 : 0)};
   padding: 0;
   position: relative;
-  transform: ${props => (props.isLoaded ? 'none' : 'translate3d(-2em, 0, 0)')};
+  transform: ${(props) =>
+    props.isLoaded ? 'none' : 'translate3d(-2em, 0, 0)'};
   transition: opacity 1.5s ease, transform 0.5s ease-out, filter 0.5s ease;
   width: calc(100% - 50px);
 `;
@@ -103,6 +104,7 @@ const StyledSubtitle = styled.div`
 `;
 
 const StyledParagraph = styled.p`
+  font-size: 1.5em;
   line-height: 1.5em;
 `;
 
