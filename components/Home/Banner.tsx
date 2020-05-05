@@ -113,9 +113,13 @@ const StyledSubtitle = styled.div`
 `;
 
 const StyledParagraph = styled.p`
-  font-size: 1.5em;
+  font-size: 1.25em;
   line-height: 1.5em;
   margin-bottom: 1em;
+
+  @media screen and (${breakpoints.small}) {
+    font-size: 1.5em;
+  }
 `;
 
 export default Banner;
